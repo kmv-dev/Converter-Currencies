@@ -17,6 +17,7 @@ onMounted(() => {});
   justify-content: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   box-shadow: 0 0 15px rgb(0, 0, 0, 12%);
+  margin-bottom: 10px;
   &__link {
     padding: 8px 0;
     margin: 0 10px;

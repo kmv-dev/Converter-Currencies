@@ -5,43 +5,38 @@
   </button>
 </template>
 
-<script>
-export default {
-  name: "BaseButton",
-  props: {
-    type: {
-      type: String,
-      default: "",
-    },
-    mode: {
-      type: String,
-      default: "",
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    isIcon: {
-      type: Boolean,
-      default: false,
-    },
-    iconClass: {
-      type: String,
-      default: "",
-    },
+<script setup>
+import { computed } from "vue";
+const props = defineProps({
+  type: {
+    type: String,
+    default: "",
   },
-  computed: {
-    btnClass() {
-      const { mode, disabled } = this;
-      return [
-        {
-          "base-btn_disabled": disabled,
-          "base-btn_logout": mode === "logout",
-        },
-      ];
-    },
+  mode: {
+    type: String,
+    default: "",
   },
-};
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  isIcon: {
+    type: Boolean,
+    default: false,
+  },
+  iconClass: {
+    type: String,
+    default: "",
+  },
+});
+const btnClass = computed(() => {
+  return [
+    {
+      "base-btn_disabled": props.disabled,
+      "base-btn_logout": props.mode === "logout",
+    },
+  ];
+});
 </script>
 
 <style lang="scss" scoped>
