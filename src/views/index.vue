@@ -20,16 +20,13 @@
 
 <script setup>
 import CurrencyPair from "@/components/CurrencyPair/index.vue";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 const baseCurrency = ref("RUB");
 const search = ref("");
 const getCurrencies = computed(() => store.getters.getCurrency);
-onMounted(() => {
-  console.log(Object.values(getCurrencies));
-});
 const filteredCurrency = computed(() => {
   let newArr = Object.values(getCurrencies.value);
   return newArr.filter((item) => {

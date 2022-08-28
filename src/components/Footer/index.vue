@@ -13,6 +13,7 @@
   color: #000000;
   border-top: 1px solid #d9dbe9;
   padding: 10px 0;
+  margin-top: 10px;
   &__link {
     text-decoration: none;
     color: #7964e6;
