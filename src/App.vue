@@ -6,15 +6,16 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Header from "@/components/Header/index.vue";
 import Footer from "@/components/Footer/index.vue";
-export default {
-  components: {
-    Header,
-    Footer,
-  },
-};
+import { onMounted } from "vue";
+import { useStore } from "vuex";
+const store = useStore();
+onMounted(async () => {
+  await getCurrency();
+});
+const getCurrency = () => store.dispatch("getCurrency");
 </script>
 
 <style lang="scss">
