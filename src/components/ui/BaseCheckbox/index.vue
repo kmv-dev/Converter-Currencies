@@ -14,35 +14,31 @@
   </label>
 </template>
 
-<script>
-export default {
-  name: "BaseCheckbox",
-  props: {
-    value: {
-      type: String,
-      default: null,
-    },
-    modelValue: {
-      type: Array,
-      default: () => [],
-    },
-    checked: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+const emits = defineEmits(["update:modelValue"]);
+const props = defineProps({
+  value: {
+    type: String,
+    default: null,
   },
-  methods: {
-    onChange(value) {
-      if (this.modelValue.includes(this?.value)) {
-        this.$emit(
-          "update:modelValue",
-          this.modelValue.filter((cv) => cv !== value)
-        );
-      } else {
-        this.$emit("update:modelValue", this.modelValue.concat(value));
-      }
-    },
+  modelValue: {
+    type: Array,
+    default: () => [],
   },
+  checked: {
+    type: Boolean,
+    default: false,
+  },
+});
+const onChange = (value) => {
+  if (props.modelValue.includes(this?.value)) {
+    emits(
+      "update:modelValue",
+      props.modelValue.filter((cv) => cv !== value)
+    );
+  } else {
+    emits("update:modelValue", props.modelValue.concat(value));
+  }
 };
 </script>
 

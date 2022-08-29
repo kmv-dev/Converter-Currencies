@@ -22,11 +22,13 @@
 import CurrencyPair from "@/components/CurrencyPair/index.vue";
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
-
 const store = useStore();
+
 const baseCurrency = ref("RUB");
 const search = ref("");
+
 const getCurrencies = computed(() => store.getters.getCurrency);
+
 const filteredCurrency = computed(() => {
   let newArr = Object.values(getCurrencies.value);
   return newArr.filter((item) => {
