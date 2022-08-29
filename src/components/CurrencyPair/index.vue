@@ -8,16 +8,16 @@
       }"
       :style="{ background: data.Value > data.Previous ? 'green' : 'red' }"
     />
-    <p class="pair__char-code">{{ data.CharCode }}/{{ baseCurrency }}</p>
-    <p class="pair__info" v-if="!swap">
+    <div class="pair__char-code">{{ data.CharCode }}/{{ baseCurrency }}</div>
+    <div class="pair__info" v-if="!swap">
       <span class="pair__count">1</span> {{ data.Name }} =
       <span class="pair__count">{{ data.Value }}</span> Рублей
-    </p>
-    <p class="pair__info" v-if="swap">
+    </div>
+    <div class="pair__info" v-if="swap">
       <span class="pair__count">1</span> Рубль =
       <span class="pair__count">{{ calcAmount }}</span>
       {{ data.Name }}
-    </p>
+    </div>
     <BaseButton class="pair__button" @click="swap = !swap">
       <span class="icon-swap_horizontal" />
     </BaseButton>
