@@ -12,9 +12,11 @@ import Footer from "@/components/Footer/index.vue";
 import { onMounted } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
+
 onMounted(async () => {
   await getCurrency();
 });
+
 const getCurrency = () => store.dispatch("getCurrency");
 </script>
 

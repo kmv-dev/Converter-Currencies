@@ -20,25 +20,21 @@
   </transition>
 </template>
 
-<script>
-export default {
-  name: "BaseModal",
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false,
-    },
-    title: {
-      type: String,
-      default: "",
-    },
+<script setup>
+const emits = defineEmits(["update:isShow"]);
+const props = defineProps({
+  isShow: {
+    type: Boolean,
+    default: false,
   },
-  methods: {
-    modalHide() {
-      this.$emit("update:isShow", false);
-      document.body.style.overflow = "auto";
-    },
+  title: {
+    type: String,
+    default: "",
   },
+});
+const modalHide = () => {
+  emits("update:isShow", false);
+  document.body.style.overflow = "auto";
 };
 </script>
 
