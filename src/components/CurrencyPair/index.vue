@@ -9,14 +9,10 @@
       :style="{ background: data.Value > data.Previous ? 'green' : 'red' }"
     />
     <div class="pair__char-code">{{ data.CharCode }}/{{ baseCurrency }}</div>
-    <div class="pair__info" v-if="!swap">
-      <span class="pair__count">1</span> {{ data.Name }} =
-      <span class="pair__count">{{ data.Value }}</span> Рублей
-    </div>
-    <div class="pair__info" v-if="swap">
-      <span class="pair__count">1</span> Рубль =
-      <span class="pair__count">{{ calcAmount }}</span>
-      {{ data.Name }}
+    <div class="pair__info">
+      <span class="pair__count">1</span> {{ !swap ? data.Name : oneRub }} =
+      <span class="pair__count">{{ !swap ? data.Value : calcAmount }}</span>
+      {{ !swap ? manyRub : data.Name }}
     </div>
     <BaseButton class="pair__button" @click="swap = !swap">
       <span class="icon-swap_horizontal" />
@@ -36,6 +32,8 @@ const props = defineProps({
   },
 });
 const swap = ref(false);
+const oneRub = ref("Рубль");
+const manyRub = ref("Рублей");
 const calcAmount = computed(() => (1 / props.data.Value).toFixed(4));
 </script>
 
