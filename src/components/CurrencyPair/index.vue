@@ -1,14 +1,12 @@
 <template>
   <div class="pair">
     <span
-      v-if="data.Value > data.Previous"
-      class="pair__icon icon-short_up"
-      style="background: green"
-    />
-    <span
-      v-if="data.Value < data.Previous"
-      class="pair__icon icon-short_down"
-      style="background: red"
+      class="pair__icon"
+      :class="{
+        'icon-short_up': data.Value > data.Previous,
+        'icon-short_down': data.Value < data.Previous,
+      }"
+      :style="{ background: data.Value > data.Previous ? 'green' : 'red' }"
     />
     <p class="pair__char-code">{{ data.CharCode }}/{{ baseCurrency }}</p>
     <p class="pair__info" v-if="!swap">
