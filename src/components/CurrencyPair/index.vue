@@ -21,8 +21,8 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
 import BaseButton from "@/components/ui/BaseButton/index.vue";
+import { ref, computed } from "vue";
 const props = defineProps({
   data: {
     type: Object,
